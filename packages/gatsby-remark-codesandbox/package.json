@@ -1,0 +1,23 @@
+{
+  "name": "@tkorakas/gatsby-remark-codesandbox",
+  "version": "0.0.1",
+  "license": "MIT",
+  "main": "src/index.js",
+  "repository": {
+    "url": "https://github.com/tkorakas/gatsby-remark-codesandbox"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
+    "access": "public"
+  },
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "clean": "gatsby clean",
+    "test": "jest",
+    "lint": "eslint **/**/*.js"
+  },
+  "dependencies": {
+    "axios": "^0.24.0"
+  }
+}
