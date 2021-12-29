@@ -1,0 +1,14 @@
+{
+  "extends": ["plugin:node/recommended", "prettier"],
+  "plugins": ["prettier", "jest"],
+  "rules": {
+    "prettier/prettier": ["error"]
+  },
+  "env": {
+    "browser": false,
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "parser": "@babel/eslint-parser"
+}

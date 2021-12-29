@@ -11,10 +11,20 @@
     "access": "public"
   },
   "scripts": {
-    "test": "jest",
-    "lint": "eslint **/**/*.js"
+    "test": "jest --config ./jest.config.json",
+    "lint": "eslint src/**.js"
   },
   "dependencies": {
     "axios": "^0.24.0"
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.16.5",
+    "eslint": "^8.5.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^25.3.2",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "jest": "^27.4.5",
+    "prettier": "^2.5.1"
   }
 }
