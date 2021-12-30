@@ -32,7 +32,7 @@ exports.getFilesContent = async (paths) => {
   return sandboxFiles;
 };
 
-exports.getDirectoryPath = (url, protocol) => {
+exports.getDirectoryPath = (rootDirectory, url, protocol) => {
   let directoryPath = url.replace(protocol, '');
-  return path.join('rootDirectory', directoryPath);
+  return path.join(rootDirectory, directoryPath);
 };

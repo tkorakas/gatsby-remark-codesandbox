@@ -1,5 +1,5 @@
 const { getAllFiles, getFilesContent } = require('./get-files');
-const { default: axios } = require('axios');
+const axios = require('axios');
 
 const generateSandbox = async (path) => {
   try {
@@ -16,7 +16,7 @@ const generateSandbox = async (path) => {
     );
     return response.data.sandbox_id;
   } catch (error) {
-    console.log(error);
+    return null;
   }
 };
 

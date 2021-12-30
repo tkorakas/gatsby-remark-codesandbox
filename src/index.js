@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const mapChildren = require('./map-children');
 const generateSandbox = require('./generate-sandbox');
 const { getDirectoryPath } = require('./get-files');
@@ -13,13 +15,14 @@ module.exports = async (
   if (!rootDirectory) {
     throw Error('Required option "directory" not specified');
   }
+
+  if (!fs.existsSync(rootDirectory)) {
+    throw Error(`Cannot find directory "${rootDirectory}"`);
+  }
+
   if (!rootDirectory.endsWith('/')) {
     rootDirectory += '/';
   }
-
-  // else if (!fs.existsSync(rootDirectory)) {
-  //   throw Error(`Cannot find directory "${rootDirectory}"`);
-  // }
 
   const transformedAST = await mapChildren(
     markdownAST,
@@ -28,8 +31,8 @@ module.exports = async (
         return node;
       }
       if (node.url.startsWith(EMBED_PROTOCOL)) {
-        const sandboxId = generateSandbox(
-          getDirectoryPath(node.url, EMBED_PROTOCOL),
+        const sandboxId = await generateSandbox(
+          getDirectoryPath(rootDirectory, node.url, EMBED_PROTOCOL),
         );
         return {
           type: 'html',
@@ -39,8 +42,8 @@ module.exports = async (
         };
       }
       if (node.url.startsWith(LINK_PROTOCOL)) {
-        const sandboxId = generateSandbox(
-          getDirectoryPath(node.url, LINK_PROTOCOL),
+        const sandboxId = await generateSandbox(
+          getDirectoryPath(rootDirectory, node.url, LINK_PROTOCOL),
         );
 
         return Object.assign(node, {
