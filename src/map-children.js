@@ -1,4 +1,4 @@
-module.exports = async (node, callback) => {
+const mapChildren = async (node, callback) => {
   const children = [];
   if (!node.children) {
     return node;
@@ -11,3 +11,4 @@ module.exports = async (node, callback) => {
   }
   return Object.assign(node, { children });
 };
+module.exports = mapChildren;
